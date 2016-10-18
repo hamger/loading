@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>loading</title>
+	<style>
+		.loader { 
+			position: relative;
+			margin: 0 auto;
+			width: 100px;/*改变这个值可以改变loading大小*/
+
+		}
+
+		.loader:before {
+			content: '';
+			display: block;
+			padding-top: 100%;
+		}
+
+		.circular {
+			-webkit-animation: rotate 2s linear infinite;
+			-o-animation: rotate 2s linear infinite;
+			animation: rotate 2s linear infinite;
+			height: 100%;
+			transform-origin: center center;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+
+		.path {
+			stroke-dasharray: 1,200;
+			stroke-dashoffset:0;
+			-webkit-animation: dash 1.5s ease infinite , color 6s ease infinite;
+			-o-animation: dash 1.5s ease infinite , color 6s ease infinite;
+			animation: dash 1.5s ease infinite , color 6s ease infinite;
+			stroke-linecap: round;
+		}
+
+		@keyframes rotate {
+			100%{
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes dash {
+			0%{
+				stroke-dasharray: 1,200;
+				stroke-dashoffset:0;
+			}
+			50%{
+				stroke-dasharray: 89,200;
+				stroke-dashoffset:-35px;
+			}
+			100%{
+				stroke-dasharray: 89,200;
+				stroke-dashoffset:-124px;
+			}
+		}
+
+		@keyframes color {
+			100%,0%{
+				stroke: red;
+			}
+			40%{
+				stroke: red;
+			}
+			60%{
+				stroke: red;
+			}
+			90%{
+				stroke: red;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="loader">
+		<svg class="circular" viewBox="25 25 50 50">
+			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" ></circle>
+		</svg>
+	</div>
+</body>
+</html>
